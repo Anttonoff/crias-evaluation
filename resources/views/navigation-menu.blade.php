@@ -16,21 +16,27 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('calf.index') }}" :active="request()->routeIs('calf.index')">
-                        {{ __('Crías') }}
-                    </x-jet-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('sensor.log.index') }}" :active="request()->routeIs('sensor.log.index')">
-                        {{ __('Sensores') }}
-                    </x-jet-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('sick.calf.index') }}" :active="request()->routeIs('sick.calf.index')">
-                        {{ __('Crías por enfermar') }}
-                    </x-jet-nav-link>
-                </div>
+                @hasanyrole('personal-control|reclutador')
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('calf.index') }}" :active="request()->routeIs('calf.index')">
+                            {{ __('Crías') }}
+                        </x-jet-nav-link>
+                    </div>
+                @endhasanyrole
+                @hasanyrole('ayudante-veterinario')
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('sensor.log.index') }}" :active="request()->routeIs('sensor.log.index')">
+                            {{ __('Sensores') }}
+                        </x-jet-nav-link>
+                    </div>
+                @endhasanyrole
+                @hasanyrole('veterinario')
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('sick.calf.index') }}" :active="request()->routeIs('sick.calf.index')">
+                            {{ __('Crías por enfermar') }}
+                        </x-jet-nav-link>
+                    </div>
+                @endhasanyrole
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -155,15 +161,21 @@
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ route('calf.index') }}" :active="request()->routeIs('calf.index')">
-                {{ __('Crías') }}
-            </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ route('sensor.log.index') }}" :active="request()->routeIs('sensor.log.index')">
-                {{ __('Sensores') }}
-            </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ route('sick.calf.index') }}" :active="request()->routeIs('sick.calf.index')">
-                {{ __('Crías por enfermar') }}
-            </x-jet-responsive-nav-link>
+            @hasanyrole('personal-control|reclutador')
+                <x-jet-responsive-nav-link href="{{ route('calf.index') }}" :active="request()->routeIs('calf.index')">
+                    {{ __('Crías') }}
+                </x-jet-responsive-nav-link>
+            @endhasanyrole
+            @hasanyrole('ayudante-veterinario')
+                <x-jet-responsive-nav-link href="{{ route('sensor.log.index') }}" :active="request()->routeIs('sensor.log.index')">
+                    {{ __('Sensores') }}
+                </x-jet-responsive-nav-link>
+            @endhasanyrole
+            @hasanyrole('veterinario')
+                <x-jet-responsive-nav-link href="{{ route('sick.calf.index') }}" :active="request()->routeIs('sick.calf.index')">
+                    {{ __('Crías por enfermar') }}
+                </x-jet-responsive-nav-link>
+            @endhasanyrole
         </div>
 
         <!-- Responsive Settings Options -->
