@@ -15,7 +15,7 @@ return new class () extends Migration {
         Schema::create('barnyard_types', function (Blueprint $table) {
             $table->id();
             $table->string('slug')->unique()->comment('Identificador de tipo de corral');
-            $table->string('type')->unique()->comment('Tipo de corral, 1: General, 2: Cuarentena');
+            $table->integer('type')->unique()->comment('Tipo de corral, 1: General, 2: Cuarentena');
             $table->string('name')->comment('Nombre de tipo de corral');
             $table->timestamps();
         });

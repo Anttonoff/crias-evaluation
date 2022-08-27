@@ -18,7 +18,8 @@ return new class () extends Migration {
             $table->integer('heart_rate')->comment('Frecuencia cardiaca de la cría');
             $table->integer('blood_rate')->comment('Frecuencia sanguínea de la cría');
             $table->integer('breathing_rate')->comment('Frecuencia respiratoria de la cría');
-            $table->double('temperature', 8, 1)->comment('Temperatura de la cría');
+            $table->double('temperature', 11, 2)->comment('Temperatura de la cría');
+            $table->boolean('is_healthy')->comment('false: No, true: Si');
             $table->foreignId('calf_id')->comment('Relacion de los registros del sensor con la cría')->constrained();
             $table->timestamps();
         });

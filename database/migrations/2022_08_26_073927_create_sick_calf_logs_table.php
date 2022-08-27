@@ -18,6 +18,7 @@ return new class () extends Migration {
             $table->longText('diet')->comment('Descripción de dieta de la cría enferma');
             $table->longText('treatment')->comment('Descripción de tratamiento de la cría enferma');
             $table->foreignId('calf_id')->comment('Relacion de los registros de cuarentena de la cría')->constrained();
+            $table->foreignId('barnyard_id')->comment('Relacion de la cría con el corral')->constrained();
             $table->timestamps();
         });
     }

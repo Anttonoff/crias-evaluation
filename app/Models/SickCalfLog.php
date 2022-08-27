@@ -26,6 +26,23 @@ class SickCalfLog extends Model
      * @var string[]
      */
     protected $guarded = [
-        'calf_id'
+        'calf_id',
+        'barnyard_id'
     ];
+
+    /**
+     * Relación con la cría.
+     */
+    public function calf()
+    {
+        return $this->belongsTo(Calf::class);
+    }
+
+    /**
+     * Relación con el corral.
+     */
+    public function barnyard()
+    {
+        return $this->belongsTo(Barnyard::class);
+    }
 }

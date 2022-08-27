@@ -19,7 +19,8 @@ class SensorLog extends Model
         'heart_rate',
         'blood_rate',
         'breathing_rate',
-        'temperature'
+        'temperature',
+        'is_healthy'
     ];
 
     /**
@@ -30,4 +31,12 @@ class SensorLog extends Model
     protected $guarded = [
         'calf_id'
     ];
+
+    /**
+     * Relación con la cría.
+     */
+    public function calf()
+    {
+        return $this->belongsTo(Calf::class);
+    }
 }

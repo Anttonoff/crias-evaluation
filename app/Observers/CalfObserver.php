@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Http\Controllers\CalfController;
 use App\Models\Calf;
+use Illuminate\Support\Str;
 use App\Models\MeatClassification;
 
 class CalfObserver
@@ -27,9 +28,11 @@ class CalfObserver
      */
     public function creating(Calf $calf)
     {
+        $calf->slug = Str::random(10);
         $meatType = CalfController::getMeatClassification($calf->weight, $calf->muscle_color, $calf->marbling);
         $meatClassification = MeatClassification::where('type', $meatType)->firstOrFail();
         $calf->meat_classification_id = $meatClassification->id;
+        $calf->is_in_quarantine = false;
     }
 
     /**

@@ -27,4 +27,12 @@ class Barnyard extends Model
     protected $guarded = [
         'barnyard_type_id'
     ];
+
+    /**
+     * Relación con tipo corral del corral.
+     */
+    public function barnyardType()
+    {
+        return $this->hasOne(BarnyardType::class);
+    }
 }

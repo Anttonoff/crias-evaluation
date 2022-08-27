@@ -3,7 +3,11 @@
 namespace App\Providers;
 
 use App\Models\Calf;
+use App\Models\SensorLog;
+use App\Models\SickCalfLog;
 use App\Observers\CalfObserver;
+use App\Observers\SensorLogObserver;
+use App\Observers\SickCalfLogObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -30,6 +34,8 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         Calf::observe(CalfObserver::class);
+        SensorLog::observe(SensorLogObserver::class);
+        SickCalfLog::observe(SickCalfLogObserver::class);
     }
 
     /**
