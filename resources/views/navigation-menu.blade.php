@@ -16,7 +16,7 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
                 </div>
-                @hasanyrole('personal-control|reclutador')
+                @hasanyrole('personal-control|reclutador|veterinario')
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-jet-nav-link href="{{ route('calf.index') }}" :active="request()->routeIs('calf.index')">
                             {{ __('Crías') }}
@@ -161,7 +161,7 @@
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
-            @hasanyrole('personal-control|reclutador')
+            @hasanyrole('personal-control|reclutador|veterinario')
                 <x-jet-responsive-nav-link href="{{ route('calf.index') }}" :active="request()->routeIs('calf.index')">
                     {{ __('Crías') }}
                 </x-jet-responsive-nav-link>

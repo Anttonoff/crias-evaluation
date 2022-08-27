@@ -13,8 +13,6 @@ class Index extends Component
 
     public function render()
     {
-        $this->emit('saved');
-
         $sensors = SensorLog::all()->pluck('calf_id')->unique();
 
         return view('livewire.sick-calf.index', [
